@@ -23,7 +23,7 @@ public class EducacionService {
         return ieducacionRepository.findById(id);
     }
 
-    public Optional<Educacion> getByNmbreE(String nombreE) {
+    public Optional<Educacion> getByNombreE(String nombreE) {
         return ieducacionRepository.findByNombreE(nombreE);
     }
 

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
+@CrossOrigin(origins = {"https://mgbfrontend.web.app", "http://localhost:4200"})
 public class EducacionController {
 
     @Autowired
@@ -74,7 +74,7 @@ public class EducacionController {
         if (!educacionService.existsById(id)) {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
-        if (educacionService.existsByNombreE(dtoeducacion.getNombreE()) && educacionService.getByNmbreE(dtoeducacion.getNombreE()).get().getId() != id) {
+        if (educacionService.existsByNombreE(dtoeducacion.getNombreE()) && educacionService.getByNombreE(dtoeducacion.getNombreE()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
         }
         if (StringUtils.isBlank(dtoeducacion.getNombreE())) {
